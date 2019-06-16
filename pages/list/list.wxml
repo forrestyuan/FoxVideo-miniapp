@@ -1,0 +1,41 @@
+<view class="container">
+  
+  <view class="tp_title">
+    <text class="txt">{{title}}</text>
+    <!-- 选择城市 -->
+    <picker wx:if="{{isShowCitySelect}}" class="cityPicker" mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+      <image class="dingwei_icon" src="../../images/dingwei.png" mode="aspectFit"/>
+      <text class="dingwei_txt">{{region[1]}}</text>
+    </picker>
+  </view>
+  <!-- 电影列表 -->
+  <view class="film_list">
+    <navigator wx:for="{{filmList}}" wx:key="index"  url="../item/item?movie_id={{item.id}}&city={{city}}" hover-class="navigator-hover" open-type="navigate">
+      <view class="film_item">
+        <image class="film_poster" src="{{item.images.small}}" mode="widthFix" lazy-load="true" />
+        <view class="film_detail">
+            <text class="film_title">{{item.title}}({{item.year}})</text>
+            <text class="film_rating">{{item.rating.average % 1 == 0 ? item.rating.average+'.0' : item.rating.average }}分</text>
+            <view class="film_time_len">
+              时长：
+              <text>{{item.durations}}</text>
+            </view>
+            <view class="film_genres">
+              类别：
+              <text wx:for="{{item.genres}}" wx:for-item="genresItem" wx:key="*this">{{genresItem+' '}}</text>
+            </view>
+            <view class="film_person">
+              <view class="person_row">
+                导演：
+                <text class="film_director" wx:for="{{item.directors}}" wx:for-item="directorItem" wx:key="directorItem.id">{{directorItem.name}}</text>
+              </view>
+              <view  class="person_row">
+                演员：
+                <text class="film_actor" wx:for="{{item.casts}}" wx:for-item="actorItem" wx:key="actorItem.id">{{actorItem.name}}</text>
+              </view>
+            </view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>

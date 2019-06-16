@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="slide">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:for-item="imgItem" wx:key="*this">
+        <swiper-item>
+          <image class="slider_img" src="{{imgItem}}" mode="aspectFill" />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="board">
+    <navigator wx:for="{{boardList}}" wx:for-item="boardItem" wx:for-index="boardIndex"  wx:key="boardItem.url" url="{{boardItem.url}}" hover-class="navigator-hover" open-type="navigate">
+      <view class="board-item">
+        <image class="board_item_icon" src="{{boardItem.iconPath}}" mode="aspectFill" />
+        <text class="board_title">{{boardItem.title}}</text>
+        <image class="arrow_right" src="../../images/arrow_right.png" mode="aspectFill"/>
+      </view>
+    </navigator>
+  </view>
+</view>

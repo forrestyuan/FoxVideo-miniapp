@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <block wx:else>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class="userinfo_sub">
+    <text class="u_item">地址：{{userInfo.country}}-{{userInfo.province}}-{{userInfo.city}}</text>
+    <text class="u_item">性别：{{userInfo.gender == 1? '男':'女'}}</text>
+  </view>
+  <view class="usermotto">
+    <text class="user-motto">小花电影，电影资讯最新点</text>
+  </view>
+</view>

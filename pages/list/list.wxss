@@ -1,0 +1,91 @@
+.tp_title{
+  position: relative;
+  display: flex;
+  height:120rpx;
+  border-bottom:solid 1px #ccc;
+}
+.tp_title .txt{
+  display: flex;
+  flex:1;
+  justify-content: center;
+  align-items: center;
+}
+.tp_title .cityPicker{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  right:10rpx;
+  top:50%;
+  transform: translateY(-50%);
+}
+.cityPicker .dingwei_icon{
+  width:50rpx;
+  height:50rpx;
+  vertical-align: middle;
+}
+.cityPicker .dingwei_txt{
+  font-size: 30rpx;
+}
+/* 电影列表 */
+.film_list{
+  position:relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #efefef;
+}
+.film_list .film_item{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width:100%;
+  height:auto;
+  margin-bottom:30rpx;
+  padding:10rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+.film_item .film_poster{
+  width:260rpx;
+}
+.film_item .film_detail{
+  flex:1;
+  display: flex;
+  position:relative;
+  flex-wrap: wrap;
+}
+.film_item .film_title{
+  flex:1;
+  font-size:34rpx;
+  font-weight:700;
+  padding:10rpx;
+}
+.film_item .film_rating{
+  font-size:24rpx;
+  padding:6rpx;
+  right:10rpx;
+  top:20rpx;
+  color:#fff;
+  text-align: center;
+  background:red;
+  border-radius:100%;
+  width:60rpx;
+  height:60rpx;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.film_item .film_time_len{
+  margin-top:10rpx;
+}
+.film_item .film_time_len,
+.film_item .film_genres,
+.film_item .film_person .person_row{
+  width:100%;
+  font-size:32rpx;
+  margin-bottom:10rpx;
+  padding-left:10rpx;
+}
+.film_person .film_director, .film_person .film_actor{
+  margin:8rpx;
+}

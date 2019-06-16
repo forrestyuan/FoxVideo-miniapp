@@ -1,0 +1,33 @@
+.slider_img{
+  width:100%!important;
+  height:100%!important;
+}
+.board{
+  display:flex;
+  flex-direction:column;
+}
+.board navigator{
+  border-bottom:solid 1px #eee;
+}
+.board navigator:last-child{
+  border-bottom:none;
+}
+.board-item{
+  display: flex;
+  flex:1;
+  /* margin:15rpx 0; */
+  padding:40rpx 20rpx;
+  align-items: center;
+}
+.board-item .board_item_icon{
+  width:60rpx;
+  height:60rpx;
+  margin-right: 20rpx;
+}
+.board-item .board_title{
+  flex:1; 
+}
+.board-item .arrow_right{
+  width:40rpx;
+  height:40rpx;
+}

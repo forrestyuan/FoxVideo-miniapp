@@ -1,0 +1,118 @@
+<view class="container">
+  <view class="movie_slider">
+    <swiper class="blooper_swiper" indicator-dots="{{false}}" autoplay="{{false}}" duration="1000">
+      <block  wx:for="{{mvInfo.blooper_urls}}"  wx:for-index="blooperIndex" wx:key="{{blooperIndex}}" wx:for-item="blooperItem">
+        <swiper-item class="video_wrapper">
+          <video class="video_item" src="{{blooperItem}}" poster="{{mvInfo.bloopers[blooperIndex].medium}}" ></video>
+        </swiper-item>
+      </block>
+    </swiper>
+    
+  </view>
+  <view class="basicInfo">
+    <image bind:tap="showLgPoster" class="mv_poster" src="{{mvInfo.images.small}}" mode="widthFix"/>
+    <view wx:if="{{mvInfo.title}}" class="mv_info" >
+      <text class="mv_lg_title" >{{mvInfo.title}}</text>
+      <text class="mv_sm_title" >{{mvInfo.original_title}}</text>
+      <text class="mv_type_ct_time">{{mvInfo.genres}} / {{mvInfo.durations[0]}}</text>
+      <text class="mv_in_theater_time" bind:tap="showAllPubdates">{{mvInfo.pubdates[0]}}</text>
+      <text class="mv_wish_watch" >{{mvInfo.wish_count}}人想看 / {{mvInfo.collect_count}}人已看</text>
+      <!-- 星星 -->
+      <view class='movie-grade'>
+        <text class="rate_star_num">{{mvInfo.rating.average}}分 </text>
+        <image src='../../images/rate_light.png' wx:for="{{lights}}" wx:key="item"/>
+        <image src='../../images/rate_half.png' wx:for="{{halfs}}" wx:key="item"/>
+        <image src='../../images/rate_gray.png' wx:for='{{grays}}' wx:key="item"/>
+        <view class="douban_rating_box">
+          <text class="douban_rate_num">豆瓣评分：</text>
+          <text class="rate_user_num">{{mvInfo.ratings_count}}人已评</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="section_tab">
+    <!-- tab 切换 -->
+    <view class="mv_tab_type">
+      <text class="reviews {{tabShowType == 0 ? 'active':''}}" bind:tap="changeTab"  data-tid="0">简介</text>
+      <text class="reviews {{tabShowType == 1 ? 'active':''}}" bind:tap="changeTab"  data-tid="1">影评</text>
+      <text class="comments {{tabShowType == 2 ? 'active':''}}" bind:tap="changeTab"  data-tid="2" >短评</text>
+      <text class="more {{tabShowType == 3 ? 'active':''}}" bind:tap="changeTab"  data-tid="3" >更多</text>
+    </view>
+    <view class="tab_detail_wrap">
+      <view style="{{tabShowType == 0 ? '':'display:none'}}" class="reviews_detail">
+        <!-- short desc -->
+        <view class="short_desc">
+          <view class="desc_wrap" style="{{isAllDesc ? 'height:auto;': 'height:6em'}}">
+            <text>{{mvInfo.summary}}</text>
+          </view>
+          <text class="show_hide_desc_btn" wx:if="{{!isAllDesc}}" bind:tap="showMoreDesc">展开</text>
+          <text class="show_hide_desc_btn" wx:else bind:tap="hideMoreDesc">收起</text>
+        </view>
+        <!-- 花絮 -->
+        <view class="sec_tit">
+          <text >精彩花絮</text>  
+        </view>
+        <swiper indicator-dots="{{false}}" autoplay="{{false}}"  duration="1000">
+          <block wx:for="{{mvInfo.trailer_urls}}" wx:for-index="trailerIndex" wx:key="{{trailerIndex}}" wx:for-item="trailerItem">
+            <swiper-item class="video_wrapper">
+              <video class="video_item" src="{{trailerItem}}" poster="{{mvInfo.trailers[trailerIndex].medium}}"></video>
+            </swiper-item>
+          </block>
+        </swiper>
+        <!-- 剧照 -->
+        <view class="sec_tit">
+          <text >剧照</text>  
+        </view>
+        <scroll-view class="photo_scroll" scroll-x >
+          <image lazy-load="{{true}}" wx:for="{{mvInfo.photos}}" wx:for-item="photoItem" wx:for-index="photoIndex" wx:key="{{photoIndex}}" mode="widthFix" src="{{photoItem.cover}}"></image>
+        </scroll-view>
+         <view>
+          <text class="show_hide_desc_btn" style="font-size:26rpx" >~我是有底线的~</text>
+        </view>
+      </view>
+      <!-- 长评 -->
+      <view style="{{tabShowType == 1 ? '':'display:none'}}" class="reviews_detail">
+        <view wx:for="{{mvInfo.popular_reviews}}" wx:for-item="reviewItem" wx:for-index="reviewIndex" wx:key="{{reviewIndex}}" class="review_item">
+          <view class="reviewer">
+            <image class="thumbnail" src="{{reviewItem.author.avatar}}" mode="widthFix"></image>
+            <text class="username">{{reviewItem.author.name}}</text>
+          </view>
+          <view class="review_txt">
+            <text class="review_tit">{{reviewItem.title}}</text>
+            <text class="long_review" style="{{reviewItem.isShow ? 'height:auto': ''}}">{{reviewItem.content}}</text>
+            <text class="expand_review" bind:tap="showLongReview" data-index="{{reviewIndex}}">{{reviewItem.isShow ? '收起': '展开'}}</text>
+          </view>
+        </view>
+        <view>
+          <text wx:if="{{mvInfo.popular_reviews.length != r_total}}" class="show_hide_desc_btn"  bind:tap="showMoreReview">更多评论</text>
+          <text wx:else class="show_hide_desc_btn" >~我是有底线的~</text>
+        </view>
+      </view>
+      <!-- 短评 -->
+      <view style="{{tabShowType == 2 ? '':'display:none'}}" class="comments_detail">
+        <view wx:for="{{mvInfo.popular_comments}}" wx:for-item="commentItem" wx:for-index="commentIndex" wx:key="{{commentIndex}}" class="review_item">
+          <view class="reviewer">
+            <image class="thumbnail" src="{{commentItem.author.avatar}}" mode="widthFix"></image>
+            <text class="username">{{commentItem.author.name}}</text>
+          </view>
+          <view class="review_txt">
+            <text class="review_tit">{{commentItem.title || ''}}</text>
+            <text>{{commentItem.content}}</text>
+          </view>
+        </view>
+        <view>
+          <text wx:if="{{mvInfo.popular_comments.length != c_total}}" class="show_hide_desc_btn"  bind:tap="showMoreComment">更多评论</text>
+          <text wx:else class="show_hide_desc_btn" >~我是有底线的~</text>
+        </view>
+        
+      </view>
+      <view style="{{tabShowType == 3 ? '':'display:none'}}" class="more_detail">
+        <view class="sec_tit">
+          <text>影视相关标签</text>  
+        </view>
+        <text wx:for="{{mvInfo.tags}}" wx:for-item="tagItem" wx:key="{{tagItem}}" class="tags">{{tagItem + "  "}}</text>
+      </view>
+    </view>
+  </view>
+</view>

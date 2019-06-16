@@ -1,0 +1,211 @@
+.container{
+  background-color: #ccc;
+}
+.video_wrapper{
+  min-height: 480rpx;
+}
+.blooper_swiper{
+  height:190px;
+  background:black;
+}
+.video_item{
+  width:100%;
+  height:88%;
+}
+.basicInfo{
+  display: flex;
+  margin-top: -15rpx;
+  z-index: 100;
+  box-sizing: border-box;
+  padding:65rpx 35rpx 35rpx 35rpx;
+  background-color: #fff;
+  border-radius: 7% 7% 0 0;
+}
+
+.basicInfo .mv_poster{
+  display: flex;
+  width:260rpx;
+}
+.basicInfo .mv_info{
+  display: flex;
+  flex:1;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding:0 8rpx 0 16rpx;
+}
+.mv_info .mv_lg_title{
+  width:100%;
+  font-size: 50rpx;
+  font-weight: 700;
+}
+.mv_info .mv_sm_title{
+  width:100%;
+  font-size: 28rpx;
+  color:#888;
+}
+.mv_info .mv_in_theater_time,
+.mv_info .mv_type_ct_time{
+  width:100%;
+  position: relative;
+  font-size:28rpx;
+  color:#444;
+}
+.mv_info .mv_in_theater_time::after{
+  content:'';
+  width:0;
+  height:0;
+  border:solid 10rpx transparent;
+  border-left-color: #444;
+  position: absolute;
+  right:50rpx;
+  top:7rpx;
+}
+.mv_info .mv_wish_watch{
+  width:100%;
+  font-size: 28rpx;
+  font-weight: 700;
+  color:#222;
+}
+
+.mv_info .movie-grade{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+.mv_info .movie-grade image{
+  width: 30rpx;
+  height: 30rpx;
+}
+.mv_info .movie-grade .rate_star_num{
+  color:#222;
+  font-weight: 700;
+  font-size: 36rpx;
+}
+.douban_rating_box{
+  width:100%;
+}
+.douban_rating_box .douban_rate_num{
+  font-size:36rpx;
+}
+.douban_rating_box .rate_user_num{
+  color:#444;
+  font-size:24rpx;
+}
+.desc_wrap{
+  overflow: hidden;
+  text-indent: 2em;
+  line-height: 1.5em;
+  color:#444;
+  height:6em;
+
+}
+.short_desc{
+  padding:35rpx;
+  font-size:32rpx;
+  background-color: #fff;
+}
+
+.show_hide_desc_btn{
+  text-align:center;
+  font-weight:700;
+  background:#bbb;
+  display:block;
+  border-radius:5px;
+  padding:10rpx 0;
+  color:#333;
+
+}
+
+.section_tab{
+  margin-top:20rpx;
+  background-color: #fff;
+  padding:35rpx;
+}
+.mv_tab_type{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 38rpx;
+  color: #555;
+  border-bottom: solid 2rpx #888;
+}
+.mv_tab_type text{
+  flex:1;
+  text-align: center;
+  padding:10rpx 0;
+}
+.mv_tab_type text.active{
+  font-weight: 700;
+  color:#222;
+}
+
+.sec_tit{
+  font-size:38rpx;
+  margin:20rpx 0;
+}
+.photo_scroll{
+  white-space: nowrap;
+  width: 100%
+}
+.photo_scroll image{
+  width:65%;
+  margin-right: 20rpx;
+}
+
+/*评论*/
+.review_item{
+  margin:15rpx 0;
+}
+.reviewer{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin:20rpx 0 ;
+  background-color: #eee;
+  padding:5rpx;
+  box-sizing: border-box;
+}
+.reviewer .thumbnail{
+  width:10%;
+  border-radius: 100%;
+}
+.reviewer .username{
+  font-size:26rpx;
+  color:#444;
+  flex:1;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+}
+.review_txt{
+  font-size: 28rpx;
+  color:#222;
+}
+.review_txt text{
+  display: block;
+  width:100%;
+}
+.review_txt .review_tit{
+  font-weight: 700;
+  margin:10rpx 0 ;
+}
+.long_review{
+  height:6em;
+  overflow: hidden;
+}
+.expand_review{
+  text-align: right;
+  color:blue;
+  font-size:28rpx;
+}
+.tags{
+  padding:10rpx;
+  border-radius: 5px;
+  font-size: 28rpx;
+  color: #444;
+  background-color: #fff;
+  box-shadow: 2rpx 2rpx  40rpx 1rpx #ccc;
+  margin:10rpx;
+}
