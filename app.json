@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/board/board",
+    "pages/item/item",
+    "pages/list/list",
+    "pages/search/search",
+    "pages/index/index"
+
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#003366",
+    "navigationBarTitleText": "小花电影",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "",
+    "selectedColor": "#003366",
+    "backgroundColor": "#efefef",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [ 
+      {
+        "pagePath": "pages/board/board",
+        "text": "榜单",
+        "iconPath": "./images/dianying.png",
+        "selectedIconPath": "./images/dianying_ac.png"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "搜搜",
+        "iconPath": "./images/sousuo.png",
+        "selectedIconPath": "./images/sousuo_ac.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "./images/wode.png",
+        "selectedIconPath": "./images/wode_ac.png"
+      }
+    ]
+  },
+  
+  "sitemapLocation": "sitemap.json"
+}
