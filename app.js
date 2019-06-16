@@ -35,7 +35,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    apiKey:'0b2bdeda43b5688921839c8ecb20399b',
+    apiKey:'',
     apiUrlPrefix:'https://api.douban.com/v2/movie/',
     movieType:{
       inTheaters:'in_theaters',
